@@ -13,6 +13,7 @@ export const useUserQuery = (username: string) => {
 			followers: data.followers,
 			following: data.following,
 			email: data.email,
+			publicRepos: data.public_repos,
 		}),
 	});
 };

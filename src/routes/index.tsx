@@ -7,6 +7,7 @@ export const RoutesPage = () => {
 		<Routes>
 			<Route element={<LayoutRoot />}>
 				<Route index path="/" element={<Home />} />
+				<Route path="/repository" element={<Home />} />
 			</Route>
 		</Routes>
 	);
