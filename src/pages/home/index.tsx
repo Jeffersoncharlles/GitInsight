@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { useSearchParams } from "react-router";
 import { RepositoryList } from "../../components/repositoryList";
 import { UserProfileSkeleton } from "../../components/userProfileSkellton";
+import { useReposQuery } from "./hooks/useReposQuery";
 import { useUserQuery } from "./hooks/useUserQuery";
 
 const UserProfile = lazy(() => import("../../components/userProfile"));
@@ -11,6 +12,14 @@ export const Home = () => {
 	const username = searchParams.get("q") || "";
 
 	const { data: user, isLoading, isError } = useUserQuery(username);
+
+	const {
+		isLoading: reposIsLoading,
+		isError: reposIsError,
+		data: repos,
+	} = useReposQuery(username, "stars");
+
+	console.log({ reposIsLoading, reposIsError, repos });
 
 	if (!username) {
 		return (

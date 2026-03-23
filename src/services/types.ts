@@ -37,3 +37,17 @@ export const userSchema = z.object({
 });
 
 export type User = z.infer<typeof userSchema>;
+
+export const reposSchema = z.array(
+	z.object({
+		id: z.number(),
+		name: z.string(),
+		full_name: z.string(),
+		description: z.string().nullable(),
+		stargazers_count: z.number(),
+		language: z.string().nullable(),
+		html_url: z.string().url(),
+	}),
+);
+
+export type Repo = z.infer<typeof reposSchema>[number];
