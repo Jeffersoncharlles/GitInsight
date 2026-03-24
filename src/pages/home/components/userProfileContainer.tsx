@@ -1,8 +1,8 @@
 import { lazy } from 'react'
-import { UserProfileSkeleton } from '@/components/userProfileSkelton'
-import { useUserQuery } from '@/pages/home/hooks/useUserQuery'
+import { UserProfileSkeleton } from '@/components/skeletons/userProfileSkelton'
+import { useUserQuery } from '@/shared/hooks/useUserQuery'
 
-const UserProfile = lazy(() => import('../../../components/userProfile'))
+const UserProfile = lazy(() => import('@/components/userProfile'))
 export const UserProfileContainer = ({ username }: { username: string }) => {
   const { data: user, isLoading, isError } = useUserQuery(username)
 

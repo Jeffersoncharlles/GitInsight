@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import RepositoryCard from '@/components/repositoryCard'
-import { RepositoryCardSkeleton } from '@/components/repositoryCardSkeleton'
+import { RepositoryCardSkeleton } from '@/components/skeletons/repositoryCardSkeleton'
 import { useReposQuery } from '@/pages/home/hooks/useReposQuery'
 
 export const RepositoryListContainer = ({ username }: { username: string }) => {

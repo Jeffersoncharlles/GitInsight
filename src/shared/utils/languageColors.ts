@@ -1,0 +1,18 @@
+export const languageColors: { [key: string]: string } = {
+  JavaScript: '#f1e05a',
+  TypeScript: '#3178c6',
+  Python: '#3572A5',
+  Java: '#b07219',
+  Go: '#00ADD8',
+  Ruby: '#701516',
+  PHP: '#4F5D95',
+  Swift: '#F05138',
+  Kotlin: '#A97BFF',
+  Rust: '#dea584',
+  C: '#555555',
+  'C++': '#f34b7d',
+  'C#': '#178600',
+  HTML: '#e34c26',
+  CSS: '#563d7c',
+  Shell: '#89e051',
+}

@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { useSearchParams } from 'react-router'
 
-import { UserProfileSkeleton } from '@/components/userProfileSkelton'
+import { UserProfileSkeleton } from '@/components/skeletons/userProfileSkelton'
 import { RepositoryListContainer } from '@/pages/home/components/repositoryListContainer'
 import { UserProfileContainer } from '@/pages/home/components/userProfileContainer'
 import { WelcomeView } from '@/pages/home/components/welcomeView'

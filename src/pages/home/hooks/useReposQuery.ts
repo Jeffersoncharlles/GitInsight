@@ -1,11 +1,10 @@
-import { useQuery } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { getRepos } from '@/services/getRepos'
 
 export const useReposQuery = (username: string, orderBy: 'stars' | 'name') => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['repos', username],
     queryFn: () => getRepos(username),
-    enabled: !!username,
     select: (repos) => {
       const sortedRepos = [...repos]
 
