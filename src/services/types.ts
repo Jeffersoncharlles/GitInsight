@@ -47,6 +47,7 @@ export const reposSchema = z.array(
     stargazers_count: z.number(),
     language: z.string().nullable(),
     html_url: z.string().url(),
+    updated_at: z.string(),
   }),
 )
 
@@ -70,3 +71,5 @@ export const repoDetailSchema = z.object({
 })
 
 export type RepoDetail = z.infer<typeof repoDetailSchema>
+
+export type OrderBy = 'stars' | 'name' | 'date'

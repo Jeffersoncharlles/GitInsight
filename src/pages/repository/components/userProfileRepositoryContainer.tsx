@@ -1,4 +1,4 @@
-import { useParams } from 'react-router'
+import { Link, useParams } from 'react-router'
 import { Card } from '@/components/ui/card'
 import { useUserQuery } from '@/shared/hooks/useUserQuery'
 
@@ -7,15 +7,29 @@ export const UserProfileRepositoryContainer = () => {
   const fullName = params['*'] || ''
 
   const [username] = fullName.split('/')
-  const userQuery = useUserQuery(username)
+  const { data: user } = useUserQuery(username)
 
   return (
     <Card.Root>
       <Card.Body>
-        <div className="">
-          <div>
-            <h1>{userQuery.data.name || username}</h1>
-          </div>
+        <img
+          src={user?.avatarUrl}
+          alt={user?.login}
+          className="rounded-circle mb-3"
+          style={{ width: '120px', height: '120px', objectFit: 'cover' }}
+        />
+        <h3 className="h5 mb-1 fw-semibold">{user?.login}</h3>
+        <p className="text-muted mb-3">Proprietário</p>
+
+        <div className="d-grid">
+          <Link
+            to={`https://github.com/${user?.login}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline-primary"
+          >
+            Ver Perfil no GitHub
+          </Link>
         </div>
       </Card.Body>
     </Card.Root>

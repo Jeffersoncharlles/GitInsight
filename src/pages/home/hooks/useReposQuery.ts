@@ -1,7 +1,8 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { getRepos } from '@/services/getRepos'
+import type { OrderBy } from '@/services/types'
 
-export const useReposQuery = (username: string, orderBy: 'stars' | 'name') => {
+export const useReposQuery = (username: string, orderBy: OrderBy) => {
   return useSuspenseQuery({
     queryKey: ['repos', username],
     queryFn: () => getRepos(username),
@@ -13,6 +14,14 @@ export const useReposQuery = (username: string, orderBy: 'stars' | 'name') => {
           return secondRepo.stargazers_count - firstRepo.stargazers_count
         })
       }
+      if (orderBy === 'date') {
+        return sortedRepos.sort(
+          (firstRepo, secondRepo) =>
+            new Date(secondRepo.updated_at).getTime() -
+            new Date(firstRepo.updated_at).getTime(),
+        )
+      }
+
       return sortedRepos.sort((firstRepo, secondRepo) => {
         return firstRepo.name.localeCompare(secondRepo.name)
       })

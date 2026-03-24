@@ -7,10 +7,10 @@ declare global {
   var crypto: typeof globalThis.crypto
 }
 
-globalThis.TextEncoder = TextEncoder as any
-globalThis.TextDecoder = TextDecoder as any
+globalThis.TextEncoder = TextEncoder as unknown as typeof globalThis.TextEncoder
+globalThis.TextDecoder = TextDecoder as unknown as typeof globalThis.TextDecoder
 if (!globalThis.crypto) {
-  globalThis.crypto = webcrypto as any
+  globalThis.crypto = webcrypto as unknown as typeof globalThis.crypto
 }
 
 expect.extend({})
