@@ -41,7 +41,6 @@
     "jest-environment-jsdom": "^30.3.0",
     "ts-jest": "^29.4.6",
     "typescript": "~5.9.3",
-    "vite": "^8.0.1",
-    "vite-tsconfig-paths": "^6.1.1"
+    "vite": "^8.0.1"
   }
 }
