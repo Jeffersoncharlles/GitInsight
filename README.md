@@ -16,6 +16,7 @@ Este projeto foi construído seguindo as melhores práticas de Engenharia de Sof
 - Data Fetching & Cache: orquestração de estado assíncrono com TanStack Query (v5), garantindo cache inteligente e zero requisições desnecessárias.
 - Skeleton Architecture: implementação de Skeleton Screens para um carregamento progressivo e agradável, evitando Layout Shifts.
 - Validação Rigorosa de Dados: uso de Zod para validar o schema das APIs do GitHub, garantindo resiliência contra dados inesperados.
+- Testes Automatizados: cobertura com Jest e Testing Library para garantir consistência dos dados exibidos e reduzir regressões.
 - Single Source of Truth (URL): sincronização do estado da busca diretamente com os Search Params da URL, permitindo compartilhamento de links e histórico de navegação funcional.
 - Compound Components: componentes de UI (Input e Button) baseados no padrão de composição para máxima flexibilidade e reutilização.
 

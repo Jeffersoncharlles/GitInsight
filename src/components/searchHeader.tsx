@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Search } from 'lucide-react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router'
+import { useNavigate, useSearchParams } from 'react-router'
 import z from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -15,6 +15,8 @@ const searchSchema = z.object({
 type SearchFormData = z.infer<typeof searchSchema>
 
 export const SearchHeader = () => {
+  const [searchParams] = useSearchParams()
+  const query = searchParams.get('q') || ''
   const navigate = useNavigate()
   const {
     register,
@@ -22,6 +24,9 @@ export const SearchHeader = () => {
     formState: { errors },
   } = useForm<SearchFormData>({
     resolver: zodResolver(searchSchema),
+    values: {
+      username: query,
+    },
   })
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -8,7 +8,19 @@ const config: Config = {
     '^.+\\.(t|j)sx?$': [
       'ts-jest',
       {
-        tsconfig: '<rootDir>/tsconfig.json',
+        tsconfig: {
+          target: 'ES2023',
+          module: 'ESNext',
+          moduleResolution: 'bundler',
+          jsx: 'react-jsx',
+          esModuleInterop: true,
+          allowSyntheticDefaultImports: true,
+          types: ['jest', '@testing-library/jest-dom', 'node', 'vite/client'],
+          paths: {
+            '@/*': ['./src/*'],
+          },
+        },
+        useESM: true,
       },
     ],
   },
