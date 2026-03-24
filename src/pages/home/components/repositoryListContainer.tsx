@@ -13,16 +13,7 @@ export const RepositoryListContainer = ({ username }: { username: string }) => {
     return (
       <div className="alert alert-danger">Erro ao carregar repositórios.</div>
     )
-  if (isLoading)
-    return (
-      <div className="row g-4">
-        {[...Array(6)].map((_, index) => (
-          <div key={String(index)} className="col-12 col-md-6 col-lg-4">
-            <RepositoryCardSkeleton />
-          </div>
-        ))}
-      </div>
-    )
+  if (isLoading) return <RepositoryCardSkeleton />
 
   return (
     <div>

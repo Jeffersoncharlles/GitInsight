@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { useSearchParams } from 'react-router'
-
+import { RepositoryCardSkeleton } from '@/components/skeletons/repositoryCardSkeleton'
 import { UserProfileSkeleton } from '@/components/skeletons/userProfileSkelton'
 import { RepositoryListContainer } from '@/pages/home/components/repositoryListContainer'
 import { UserProfileContainer } from '@/pages/home/components/userProfileContainer'
@@ -21,7 +21,7 @@ export const Home = () => {
           </Suspense>
         </div>
         <div className="col-12 col-lg-8">
-          <Suspense fallback={<p>Carregando repositórios...</p>}>
+          <Suspense fallback={<RepositoryCardSkeleton />}>
             <RepositoryListContainer username={username} />
           </Suspense>
         </div>

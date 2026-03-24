@@ -29,19 +29,20 @@ export const RepositoryContainer = () => {
     <div className="row g-3 mb-4">
       <Card.Root>
         <Card.Body>
-          <div className="d-flex justify-content-between align-items-start mb-3">
-            <div>
-              <h1>{repository.name}</h1>
+          <div className="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-3">
+            <div className="w-100 w-sm-auto text-break">
+              <h1 className="h4 fw-bold mb-1">{repository.name}</h1>
               <p className="text-muted small mb-0">{repository.full_name}</p>
             </div>
             <Link
               to={repository.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-primary d-flex align-items-center"
+              className="btn btn-primary btn-sm d-flex align-items-center justify-content-center gap-2 px-3 w-100 w-sm-auto ms-sm-auto"
             >
-              <ExternalLink size={18} className="me-2" />
-              Ver no GitHub
+              <ExternalLink size={18} />
+
+              <span>Ver no GitHub</span>
             </Link>
           </div>
           <p className="text-secondary mb-4" style={{ fontSize: '0.95rem' }}>
