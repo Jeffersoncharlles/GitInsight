@@ -1,5 +1,5 @@
-describe("is truthy", () => {
-	it("should be truthy", () => {
-		expect(true).toBeTruthy();
-	});
-});
+describe('is truthy', () => {
+  it('should be truthy', () => {
+    expect(true).toBeTruthy()
+  })
+})

@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
-import RepositoryCard from '../../../components/repositoryCard'
-import { RepositoryCardSkeleton } from '../../../components/repositoryCardSkeleton'
-import { useReposQuery } from '../hooks/useReposQuery'
+import RepositoryCard from '@/components/repositoryCard'
+import { RepositoryCardSkeleton } from '@/components/repositoryCardSkeleton'
+import { useReposQuery } from '@/pages/home/hooks/useReposQuery'
 
 export const RepositoryListContainer = ({ username }: { username: string }) => {
   const { data: repos, isLoading, isError } = useReposQuery(username, 'stars')

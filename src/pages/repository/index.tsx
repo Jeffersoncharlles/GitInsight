@@ -1,3 +1,3 @@
 export const Repository = () => {
-	return <section>repository</section>;
-};
+  return <section>repository</section>
+}

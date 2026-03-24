@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router'
-import { LayoutRoot } from '../pages/_layout'
-import { Home } from '../pages/home'
-import { Repository } from '../pages/repository'
+import { LayoutRoot } from '@/pages/_layout'
+import { Home } from '@/pages/home'
+import { Repository } from '@/pages/repository'
 
 export const RoutesPage = () => {
   return (

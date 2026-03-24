@@ -1,7 +1,7 @@
 import { ArrowLeft } from 'lucide-react'
 import { Link, useLocation, useNavigate } from 'react-router'
-import { SearchHeader } from './searchHeader'
-import { Button } from './ui/button'
+import { SearchHeader } from '@/components/searchHeader'
+import { Button } from '@/components/ui/button'
 
 export const Header = () => {
   const { pathname } = useLocation()

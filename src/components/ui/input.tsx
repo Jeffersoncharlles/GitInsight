@@ -1,5 +1,5 @@
 import { type ComponentProps, forwardRef } from 'react'
-import { cn } from '../../libs/cn-merge'
+import { cn } from '@/shared/libs/cn-merge'
 
 export interface InputRootProps extends ComponentProps<'div'> {}
 

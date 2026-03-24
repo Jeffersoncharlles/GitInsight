@@ -3,8 +3,8 @@ import { Search } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import z from 'zod'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 const searchSchema = z.object({
   username: z
