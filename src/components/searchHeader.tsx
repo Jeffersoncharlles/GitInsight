@@ -43,6 +43,7 @@ export const SearchHeader = () => {
         <div className="col-12 col-md-8 col-lg-6">
           <Input.Root>
             <Input.Input
+              aria-label="Buscar usuário do GitHub"
               className=""
               placeholder="Search..."
               {...usernameRegister}

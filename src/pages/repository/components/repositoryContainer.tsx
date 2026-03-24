@@ -15,13 +15,23 @@ export const RepositoryContainer = () => {
     !fullName.includes('/') ||
     fullName.split('/').length !== 2
 
-  const { data: repository, isError, isLoading } = useRepoDetailQuery(fullName)
+  const {
+    data: repository,
+    isError,
+    isLoading,
+    error,
+  } = useRepoDetailQuery(fullName)
 
   if (isInvalidUrl) {
     return <Navigate to="/" replace />
   }
   if (isError)
-    return <div className="alert alert-danger">Repositorio não encontrado.</div>
+    return (
+      <div className="alert alert-danger">
+        {(error as Error).message ||
+          'Ocorreu um erro ao carregar os repositórios. Tente novamente mais tarde.'}
+      </div>
+    )
 
   if (isLoading) return <div className="alert alert-danger">loading.....</div>
 

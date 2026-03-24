@@ -7,11 +7,19 @@ import type { OrderBy } from '@/services/types'
 
 export const RepositoryListContainer = ({ username }: { username: string }) => {
   const [orderBy, setOrderBy] = useState<OrderBy>('stars')
-  const { data: repos, isLoading, isError } = useReposQuery(username, orderBy)
+  const {
+    data: repos,
+    isLoading,
+    isError,
+    error,
+  } = useReposQuery(username, orderBy)
 
   if (isError)
     return (
-      <div className="alert alert-danger">Erro ao carregar repositórios.</div>
+      <div className="alert alert-danger">
+        {(error as Error).message ||
+          'Ocorreu um erro ao carregar os repositórios. Tente novamente mais tarde.'}
+      </div>
     )
   if (isLoading) return <RepositoryCardSkeleton />
 

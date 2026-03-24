@@ -7,7 +7,16 @@ export const UserProfileRepositoryContainer = () => {
   const fullName = params['*'] || ''
 
   const [username] = fullName.split('/')
-  const { data: user } = useUserQuery(username)
+  const { data: user, isError, error } = useUserQuery(username)
+
+  if (isError) {
+    return (
+      <div className="alert alert-danger">
+        {(error as Error).message ||
+          'Ocorreu um erro ao carregar o perfil do usuário.'}
+      </div>
+    )
+  }
 
   return (
     <Card.Root>
