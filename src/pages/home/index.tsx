@@ -1,22 +1,13 @@
 import { Suspense } from "react";
 import { useSearchParams } from "react-router";
-import { RepositoryList } from "../../components/repositoryList";
 import { UserProfileSkeleton } from "../../components/userProfileSkelton";
+import { RepositoryListContainer } from "./components/repositoryListContainer";
 import { UserProfileContainer } from "./components/userProfileContainer";
 import { WelcomeView } from "./components/welcomeView";
-import { useReposQuery } from "./hooks/useReposQuery";
 
 export const Home = () => {
 	const [searchParams] = useSearchParams();
 	const username = searchParams.get("q") || "";
-
-	const {
-		isLoading: reposIsLoading,
-		isError: reposIsError,
-		data: repos,
-	} = useReposQuery(username, "stars");
-
-	console.log({ reposIsLoading, reposIsError, repos });
 
 	if (!username) return <WelcomeView />;
 
@@ -28,9 +19,11 @@ export const Home = () => {
 						<UserProfileContainer username={username} />
 					</Suspense>
 				</div>
-			</div>
-			<div className="col-12 col-lg-8">
-				<RepositoryList />
+				<div className="col-12 col-lg-8">
+					<Suspense fallback={<p>Carregando repositórios...</p>}>
+						<RepositoryListContainer username={username} />
+					</Suspense>
+				</div>
 			</div>
 		</section>
 	);

@@ -1,59 +1,72 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Search } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
-import z from "zod";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Search } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router'
+import z from 'zod'
+import { Button } from './ui/button'
+import { Input } from './ui/input'
 
 const searchSchema = z.object({
-	username: z
-		.string()
-		.min(3, "Username e requerido e deve conter pelo menos 3 caracteres"),
-});
+  username: z
+    .string()
+    .min(3, 'Username e requerido e deve conter pelo menos 3 caracteres'),
+})
 
-type SearchFormData = z.infer<typeof searchSchema>;
+type SearchFormData = z.infer<typeof searchSchema>
 
 export const SearchHeader = () => {
-	const navigate = useNavigate();
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<SearchFormData>({
-		resolver: zodResolver(searchSchema),
-	});
+  const navigate = useNavigate()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SearchFormData>({
+    resolver: zodResolver(searchSchema),
+  })
 
-	const onSubmit = (data: SearchFormData) => {
-		navigate(`/?q=${data.username}`);
-	};
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    if (value.trim() === '') {
+      navigate('/', { replace: true })
+    }
+  }
 
-	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
-			<div className="row justify-content-center">
-				<div className="col-12 col-md-8 col-lg-6">
-					<Input.Root>
-						<Input.Input
-							className=""
-							placeholder="Search..."
-							{...register("username")}
-						/>
-						<Input.Icon>
-							<Search />
-						</Input.Icon>
-						<Button inputButton type="submit">
-							Buscar
-						</Button>
-					</Input.Root>
-					<div
-						className={`d-block text-start mt-2 ${errors.username ? "visible" : "invisible"}`}
-					>
-						<span className="badge bg-white bg-opacity-10 text-white border border-white border-opacity-25 fw-normal rounded-pill px-4 py-2 fs-6">
-							{errors.username?.message || "placeholder"}
-						</span>
-					</div>
-				</div>
-			</div>
-		</form>
-	);
-};
+  const onSubmit = (data: SearchFormData) => {
+    navigate(`/?q=${encodeURIComponent(data.username)}`)
+  }
+
+  const { onChange, ...usernameRegister } = register('username')
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-8 col-lg-6">
+          <Input.Root>
+            <Input.Input
+              className=""
+              placeholder="Search..."
+              {...usernameRegister}
+              onChange={(e) => {
+                onChange(e)
+                handleInputChange(e)
+              }}
+            />
+            <Input.Icon>
+              <Search />
+            </Input.Icon>
+            <Button inputButton type="submit">
+              Buscar
+            </Button>
+          </Input.Root>
+          <div
+            className={`d-block text-start mt-2 ${errors.username ? 'visible' : 'invisible'}`}
+          >
+            <span className="badge bg-white bg-opacity-10 text-white border border-white border-opacity-25 fw-normal rounded-pill px-4 py-2 fs-6">
+              {errors.username?.message || 'placeholder'}
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+  )
+}

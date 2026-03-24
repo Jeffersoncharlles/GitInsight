@@ -51,3 +51,22 @@ export const reposSchema = z.array(
 );
 
 export type Repo = z.infer<typeof reposSchema>[number];
+
+export const repoDetailSchema = z.object({
+	name: z.string(),
+	full_name: z.string(),
+	description: z.string().nullable(),
+	stargazers_count: z.number(),
+	forks_count: z.number(),
+	language: z.string().nullable(),
+	html_url: z.string().url(),
+	owner: z.object({
+		login: z.string(),
+		avatar_url: z.string().url(),
+	}),
+	topics: z.array(z.string()),
+	open_issues_count: z.number(),
+	updated_at: z.string(),
+});
+
+export type RepoDetail = z.infer<typeof repoDetailSchema>;
