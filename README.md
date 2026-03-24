@@ -2,6 +2,12 @@
 
 O GitInsight é uma plataforma de exploração de dados do GitHub, projetada para oferecer uma experiência fluida na busca de perfis e análise detalhada de repositórios. A aplicação prioriza performance, tipagem estática e experiência do usuário (UX).
 
+## 🌐 Preview
+
+[![GitInsight Preview](https://img.shields.io/badge/GitInsight-Preview-0ea5e9?style=for-the-badge)](https://git-insight-peach.vercel.app/)
+
+[Abrir GitInsight Preview](https://git-insight-peach.vercel.app/)
+
 ## 🚀 Diferenciais Técnicos (Arquitetura)
 
 Este projeto foi construído seguindo as melhores práticas de Engenharia de Software modernas:
