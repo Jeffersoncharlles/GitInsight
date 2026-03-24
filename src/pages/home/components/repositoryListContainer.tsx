@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import RepositoryCard from '../../../components/repositoryCard'
 import { RepositoryCardSkeleton } from '../../../components/repositoryCardSkeleton'
 import { useReposQuery } from '../hooks/useReposQuery'
@@ -34,7 +35,12 @@ export const RepositoryListContainer = ({ username }: { username: string }) => {
       <div className="row g-3">
         {repos?.map((repo) => (
           <div key={repo.id} className="col-12 col-md-6 col-lg-4">
-            <RepositoryCard repo={repo} onClick={() => {}} />
+            <Link
+              to={`/repository/${repo.full_name}`}
+              className="text-decoration-none text-reset d-block h-100"
+            >
+              <RepositoryCard repo={repo} />
+            </Link>
           </div>
         ))}
       </div>

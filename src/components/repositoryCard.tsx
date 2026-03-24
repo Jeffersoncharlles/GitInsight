@@ -10,10 +10,9 @@ interface RepositoryCardProps {
     language: string | null
     html_url: string
   }
-  onClick: () => void
 }
 
-export const RepositoryCard = ({ repo, onClick }: RepositoryCardProps) => {
+export const RepositoryCard = ({ repo }: RepositoryCardProps) => {
   return (
     <Card.Root className="card-hover" style={{ cursor: 'pointer' }}>
       <Card.Body className="d-flex flex-column">
