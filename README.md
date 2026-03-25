@@ -53,7 +53,7 @@ Espaço reservado para os prints da Home, Busca e Detalhes.
 ### 1. Instalação
 
 ```bash
-git clone https://github.com/SEU-USUARIO/GitInsight.git
+git clone https://github.com/Jeffersoncharlles/GitInsight.git
 cd GitInsight
 pnpm install
 ```
