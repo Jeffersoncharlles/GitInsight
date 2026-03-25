@@ -67,7 +67,7 @@ cp .env.example .env
 ```
 
 ```env
-VITE_BASE_API_URL=https://api.github.com
+VITE_API_BASE_URL=https://api.github.com
 ```
 
 ### 3. Rodar o Projeto
